@@ -7,9 +7,11 @@ peopleList = []
 for i in range(people):
     names.append(input(f"Please enter name for person {i + 1}: "))
 
-print(f"Hello {names}! Today is the last day of the month and we need to balance the accounts. Let's do this?")
+displayNames = "{} and {}".format(", ".join(names[:-1]),  names[-1])
+    
+print(f"Hello {displayNames}! Today is the last day of the month and we need to balance the accounts. Let's do this?")
 try:
-    x = 1
+    x, y = 1, 1
     while x == 1:
         for i in range(people):
             peopleList.append(person.Person(float(input(f"Please, enter last month's income for {names[i]}: "))))
@@ -17,8 +19,7 @@ try:
         print(f"Total house income was: C$ {mainHouse.houseIncome}.")
         for i in range(people):
             print(f"{names[i]}'s income represents {peopleList[i].calcPercent(mainHouse.houseIncome) * 100}%.")
-        print(mainHouse.defineTransfer(names, peopleList))
-        y = 1    
+        print(mainHouse.defineTransfer(names, peopleList)) 
         while y == 1:    
             answer = input("Do you want to repeat? (Y/N): ").lower()
             if answer == "n":
